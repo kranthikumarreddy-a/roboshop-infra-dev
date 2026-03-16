@@ -1,0 +1,22 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "6.33.0" # Terraform AWS provider version
+    }
+  }
+}
+
+terraform {
+  backend "s3" {
+    bucket = "remote-state-demo-88s-dev"
+    key    = "roboshop-dev-vpc"
+    region = "us-east-1"
+    use_lockfile = true
+  }
+}
+
+
+provider "aws" {
+  region = "us-east-1"
+}
